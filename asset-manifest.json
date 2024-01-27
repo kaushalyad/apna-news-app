@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.877286be.css",
-    "main.js": "/static/js/main.8175a2eb.js",
-    "static/js/787.8f0bafa3.chunk.js": "/static/js/787.8f0bafa3.chunk.js",
-    "index.html": "/index.html",
-    "main.877286be.css.map": "/static/css/main.877286be.css.map",
-    "main.8175a2eb.js.map": "/static/js/main.8175a2eb.js.map",
-    "787.8f0bafa3.chunk.js.map": "/static/js/787.8f0bafa3.chunk.js.map"
+    "main.css": "/apna-news-app/static/css/main.877286be.css",
+    "main.js": "/apna-news-app/static/js/main.6036b903.js",
+    "static/js/787.8f0bafa3.chunk.js": "/apna-news-app/static/js/787.8f0bafa3.chunk.js",
+    "index.html": "/apna-news-app/index.html",
+    "main.877286be.css.map": "/apna-news-app/static/css/main.877286be.css.map",
+    "main.6036b903.js.map": "/apna-news-app/static/js/main.6036b903.js.map",
+    "787.8f0bafa3.chunk.js.map": "/apna-news-app/static/js/787.8f0bafa3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.877286be.css",
-    "static/js/main.8175a2eb.js"
+    "static/js/main.6036b903.js"
   ]
 }
