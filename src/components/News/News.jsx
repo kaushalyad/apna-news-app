@@ -20,8 +20,6 @@ function News(props) {
   };
 
   const category = newscategory;
-  const title = capitaLize(category);
-  document.title = `${capitaLize(title)} - News`;
 
   const updatenews = async () => {
     try {
@@ -37,7 +35,6 @@ function News(props) {
   useEffect(() => {
     updatenews();
   }, []);
-  console.log(articles);
   return (
     <>
       {loading ? (
