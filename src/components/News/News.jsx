@@ -41,7 +41,7 @@ function News(props) {
         <Loading />
       ) : (
         <>
-          <Header style={{marginTop:'30px'}}>{header(capitaLize(category))}</Header>
+          <Header>{header(capitaLize(category))}</Header>
           <Container>
             <Row>
               {articles.map((element) => {

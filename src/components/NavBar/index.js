@@ -2,6 +2,9 @@ export const customNavBar = {
   backgroundColor: "#0d47a1",
   minWidth: "100vw",
   right: "0px",
+  position: "fixed",
+  top: "0px",
+  zIndex:2,
 };
 export const customNavLink = {
   fontSize: "20px",
@@ -9,7 +12,6 @@ export const customNavLink = {
   active: {
     color: "white",
   },
-  
 };
 export const navbarBrand = {
   color: "white",
