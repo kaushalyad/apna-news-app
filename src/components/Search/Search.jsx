@@ -1,53 +1,55 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import NullImage from "./nullImage.png";
-import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 import Loading from "../Loading/Loading";
 import NewsItem from "../NewsItem/NewsItem";
-import { v4 as uuidv4 } from "uuid";
+import NullImage from "../../components/Images/nullImage.png";
+import { useDispatch, useSelector } from "react-redux";
+import { searchArticle } from "../../store/action";
+import { useParams } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
-import { header } from "../../config/config";
-import { endpointPath } from "../../config/api";
+import { header, noFound, searching } from "../../config/config";
 import { Container, Header, card } from "./index";
 
-function News(props) {
-  const { newscategory, country } = props;
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
+function Search() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [totalArticles, setTotalArticle] = useState(0);
+  const { articles, loading } = useSelector((state) => state.search);
+  const { query } = useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(searchArticle(query));
+  }, [query, dispatch]);
+
+  useEffect(() => {
+    setSearchQuery(query);
+    setTotalArticle(articles.totalArticles);
+  }, [query, articles]);
 
   const capitaLize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  const category = newscategory;
-  const title = capitaLize(category);
-  document.title = `${capitaLize(title)} - News`;
+  document.title =
+    totalArticles === 0
+      ? noFound
+      : loading
+      ? searching
+      : `${capitaLize(searchQuery)} - News`;
 
-  const updatenews = async () => {
-    try {
-      const response = await axios.get(endpointPath(country, category));
-      setLoading(true);
-      const parsedData = response.data;
-      setArticles(parsedData.articles);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  useEffect(() => {
-    updatenews();
-  }, []);
-  console.log(articles);
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <>
-          <Header style={{marginTop:'30px'}}>{header(capitaLize(category))}</Header>
+          <Header>
+            {totalArticles === 0 ? noFound : header(capitaLize(searchQuery))}
+          </Header>
           <Container>
             <Row>
-              {articles.map((element) => {
+              {articles?.articles?.map((element) => {
                 return (
                   <Col sm={12} md={6} lg={4} xl={3} style={card} key={uuidv4()}>
                     <NewsItem
@@ -73,14 +75,4 @@ function News(props) {
   );
 }
 
-News.defaultProps = {
-  country: "in",
-  newscategory: "general",
-};
-
-News.propTypes = {
-  country: PropTypes.string,
-  newscategory: PropTypes.string,
-};
-
-export default News;
+export default Search;

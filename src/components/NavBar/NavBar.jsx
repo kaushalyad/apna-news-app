@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Nav, Navbar, Container, Image } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { navs } from "../../config/config";
 import {
   customNavBar,
@@ -24,13 +25,11 @@ function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {navs.map((navItem) => (
-              <Nav.Link
-                style={customNavLink}
-                key={navItem.nav}
-                href={navItem.page}
-              >
-                {navItem.nav}
-              </Nav.Link>
+              <LinkContainer to={navItem.page} style={customNavLink}>
+                <Nav.Link >
+                  {navItem.nav}
+                </Nav.Link>
+              </LinkContainer>
             ))}
           </Nav>
         </Navbar.Collapse>

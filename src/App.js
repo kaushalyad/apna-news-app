@@ -4,6 +4,7 @@ import { router } from "./config/config";
 import NavBar from "./components/NavBar/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import News from "./components/News/News";
+console.log(router);
 function App() {
   return (
     <>

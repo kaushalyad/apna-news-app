@@ -6,6 +6,10 @@ export const customNavBar = {
 export const customNavLink = {
   fontSize: "20px",
   marginLeft: "1%",
+  active: {
+    color: "white",
+  },
+  
 };
 export const navbarBrand = {
   color: "white",
@@ -18,5 +22,5 @@ export const customNavbarContainer = {
   margin: "auto",
 };
 export const customLogo = {
-  width: "90px",
+  width: "50px",
 };
